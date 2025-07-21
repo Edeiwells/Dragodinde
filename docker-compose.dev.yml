@@ -1,0 +1,65 @@
+version: "3.8"
+
+services:
+  # Base de données PostgreSQL
+  db:
+    image: postgres:15-alpine
+    container_name: dragodinde-db-dev
+    environment:
+      POSTGRES_DB: dragodinde_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - dragodinde-network
+
+  # Backend Node.js/Express en mode développement
+  backend:
+    build: ./backend
+    container_name: dragodinde-backend-dev
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=dragodinde_db
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+      - PORT=3001
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    networks:
+      - dragodinde-network
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    command: npm run dev
+
+  # Frontend React en mode développement
+  frontend:
+    image: node:18-alpine
+    container_name: dragodinde-frontend-dev
+    working_dir: /app
+    environment:
+      - REACT_APP_API_URL=http://localhost:3001/api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - dragodinde-network
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: sh -c "npm install && npm start"
+
+volumes:
+  postgres_data_dev:
+
+networks:
+  dragodinde-network:
+    driver: bridge
