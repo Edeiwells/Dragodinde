@@ -1,6 +1,5 @@
 # Instructions pour l'application Dragodinde
 
-<!-- Use this file to provide workspace-specific custom instructions to Copilot. For more details, visit https://code.visualstudio.com/docs/copilot/copilot-customization#_use-a-githubcopilotinstructionsmd-file -->
 
 Ce projet est une application de gestion d'élevage de dragodinde avec une architecture Docker en 3 conteneurs :
 
