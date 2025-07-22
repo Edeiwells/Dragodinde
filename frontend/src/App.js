@@ -207,10 +207,20 @@ function App() {
           </div>
 
           <div className="list-section">
-            <h2>
-              Liste des Dragodindes (
-              {Array.isArray(filteredDragodindes) ? filteredDragodindes.length : 0} / {Array.isArray(dragodindes) ? dragodindes.length : 0})
-            </h2>
+            <div className="list-header">
+              <h2>
+                Liste des Dragodindes
+              </h2>
+              <div className="list-counter">
+                <span className="counter-badge">
+                  {Array.isArray(filteredDragodindes) ? filteredDragodindes.length : 0} / {Array.isArray(dragodindes) ? dragodindes.length : 0}
+                </span>
+                {Array.isArray(filteredDragodindes) && Array.isArray(dragodindes) && 
+                 filteredDragodindes.length !== dragodindes.length && (
+                  <span className="filter-indicator">🔍 Filtrées</span>
+                )}
+              </div>
+            </div>
             
             {/* Barre de filtres */}
             {!loading && Array.isArray(dragodindes) && dragodindes.length > 0 && (

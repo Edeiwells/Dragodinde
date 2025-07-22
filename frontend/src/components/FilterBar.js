@@ -130,6 +130,24 @@ const FilterBar = ({ dragodindes, onFilterChange }) => {
             📍 Filtrage par génération : <strong>Génération {selectedGeneration}</strong>
           </p>
         )}
+        
+        {/* Statistiques des filtres */}
+        {filterType !== "all" && (
+          <div className="filter-stats">
+            <div className="stats-grid">
+              {filterType === "couleurs" && (
+                <div className="stat-item">
+                  <strong>Couleurs disponibles :</strong> {uniqueCouleurs.length}
+                </div>
+              )}
+              {filterType === "generation" && (
+                <div className="stat-item">
+                  <strong>Générations disponibles :</strong> {uniqueGenerations.length} (Gen {Math.min(...uniqueGenerations)} à Gen {Math.max(...uniqueGenerations)})
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
