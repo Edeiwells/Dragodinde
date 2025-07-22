@@ -213,15 +213,13 @@ docker-compose logs db
 
 ## 🌿 Branches
 
-- **main** : Branche principale stable
-- **Filtre** : Branche de développement avec système de filtrage avancé
+- **main** : Branche principale stable (inclut maintenant le système de filtrage)
+- **Filtre** : Branche de développement (fusionnée dans main)
 
-### Pour utiliser la branche Filtre
+### Historique des branches
 
-```bash
-git checkout Filtre
-docker-compose up -d
-```
+- Le système de filtrage avancé développé dans la branche "Filtre" a été intégré dans "main"
+- Toutes les fonctionnalités sont maintenant disponibles sur la branche principale
 
 ## 🤝 Contribution
 
