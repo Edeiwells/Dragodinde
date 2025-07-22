@@ -12,6 +12,7 @@ Application complète de gestion d'élevage de dragodinde avec une architecture 
 
 - ✅ CRUD complet pour les dragodindes
 - ✅ Création en lot de dragodindes identiques
+- ✅ **Système de filtrage avancé** (par couleurs et génération)
 - ✅ Interface moderne et responsive
 - ✅ API REST avec architecture modulaire
 - ✅ Base de données PostgreSQL
@@ -82,7 +83,8 @@ Dragodinde/
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── DragodindForm.js # Formulaire d'ajout/modification
-│   │   │   └── DragodindList.js # Liste des dragodindes
+│   │   │   ├── DragodindList.js # Liste des dragodindes
+│   │   │   └── FilterBar.js     # Barre de filtrage
 │   │   ├── App.js              # Composant principal
 │   │   ├── App.css             # Styles
 │   │   └── index.js
@@ -162,6 +164,15 @@ REACT_APP_API_URL=http://localhost:3001/api
 - **Modification** : Édition en place avec préremplissage
 - **Suppression** : Confirmation avant suppression
 - **Création en lot** : Possibilité de créer plusieurs dragodindes identiques en une fois
+- **Filtrage** : Filtres par couleurs et génération avec statistiques
+
+### Système de filtrage
+
+- **Filtre par couleurs** : Sélection par couleurs uniques disponibles
+- **Filtre par génération** : Sélection par numéro de génération
+- **Statistiques** : Affichage du nombre d'éléments disponibles par filtre
+- **Réinitialisation** : Bouton pour supprimer tous les filtres
+- **Indicateurs visuels** : Badges et compteurs pour l'état du filtrage
 
 ### Interface utilisateur
 
@@ -198,6 +209,18 @@ docker-compose logs
 docker-compose logs backend
 docker-compose logs frontend
 docker-compose logs db
+```
+
+## 🌿 Branches
+
+- **main** : Branche principale stable
+- **Filtre** : Branche de développement avec système de filtrage avancé
+
+### Pour utiliser la branche Filtre
+
+```bash
+git checkout Filtre
+docker-compose up -d
 ```
 
 ## 🤝 Contribution
